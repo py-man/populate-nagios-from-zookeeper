@@ -1,7 +1,7 @@
 #!/opt/local/bin/ruby
 ##Name: ruby-parse.rb
 ##created by : kevin brannigan
-##program to parse custom workday zookeeper json output & create a nagios config
+##program to parse custom zookeeper json output & create a nagios config
 
 ##Required Ruby gems
 require 'rubygems'
@@ -43,14 +43,13 @@ nConfig.show_config
 
 def test
 ##test again a dynamic ec2 instance
-#curl --user 'suvuser:o8A++6v3w9' https://i-632dcb3b.workdaysuv.com:443/ccx/cc-zk-monito
-url_so = 'https://i-632dcb3b.workdaysuv.com/ccx/cc-zk-monitoring/'
+url_so = 'zk instance goes here '
 curl = Curl::Easy.new(url_so)
-curl.username = 'suvuser'
-curl.password = 'o8A++6v3w9'
+curl.username = '***'
+curl.password = '***'
 curl.perform
 data_obj = JSON.parse(curl.body_str)
-j_file = '/Users/Dread/Dropbox/output.json2'
+j_file = '/location/of/file'
 if File.exist?(j_file)
       puts "\n\nFile: " + j_file + "...Exists"
       res = File.delete(j_file)
